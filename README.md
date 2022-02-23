@@ -2,10 +2,10 @@
 Functions for R
 - load.lib.R 
 - makeColPalette.R
-- palettes.R
+- palettes.R 
 - Subset.R
 - Taxa.mat.R
 - make.dir.R
-
+- binary.R
 # How to install
 devtools::install_github("hiroakif93/R-functions/AnalysisHelper", force=TRUE)
