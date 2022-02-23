@@ -38,7 +38,7 @@ Taxa.mat <- function(data, taxa, taxaLabel, func=function(x){sum(x)}){
     # a <- Taxa.mat(x,y, taxaLabel)
     # -------------------------------------------------#
     
-    colnames(data) <- y[colnames(data), taxaLabel]
+    colnames(data) <- taxa[colnames(data), taxaLabel]
     
     summary <- do.call(cbind,
                        lapply(unique(colnames(data)), 
