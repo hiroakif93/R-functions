@@ -5,6 +5,7 @@
 #' @param pal you can select 'RColorBrewer' or 'rainbow'. Default RColorBrewer.
 #' 
 #' @importFrom RColorBrewer brewer.pal.info
+#' @importFrom RColorBrewer brewer.pal
 #' 
 #' @examples
 #' palettes(10)
