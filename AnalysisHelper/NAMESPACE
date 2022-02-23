@@ -2,8 +2,11 @@
 
 export(Subset)
 export(Taxa.mat)
+export(binary)
 export(load.lib)
 export(make.dir)
 export(makeColPalette)
 export(palettes)
 importFrom(RColorBrewer,brewer.pal.info)
+importFrom(Rcpp,sourceCpp)
+useDynLib(AnalysisHelper, .registration=TRUE)
