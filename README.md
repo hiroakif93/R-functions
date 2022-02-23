@@ -8,4 +8,4 @@ Functions for R
 - make.dir.R
 
 # How to install
-devtools::install_github("hiroakif93/R-functions/AnalysisHelper")
+devtools::install_github("hiroakif93/R-functions/AnalysisHelper", force=TRUE)
