@@ -1,1 +1,1 @@
-To check amplicon sequence data
+# To check amplicon sequence data
