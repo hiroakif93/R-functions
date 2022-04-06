@@ -55,7 +55,7 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
             df[c(1:length(color)), 'color'] <- color
             df[specific, 'color'] <- specificColor
             
-            if( any(is.na(df$color) ){
+            if( any(is.na(df$color)) ){
                 df$color[is.na(df$color)] <- othersCol
             }
             
@@ -67,7 +67,7 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
             warning('Ignored specificName species because missing the species')
             df[c(1:length(color)), 'color'] <- color
             
-            if(any(is.na(df$color)){
+            if( any(is.na(df$color)) ){
                 df$color[is.na(df$color)] <- othersCol
             }
             
@@ -80,7 +80,7 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
         
         df[c(1:length(color)), 'color'] <- color
         
-        if(any(is.na(df$color)){
+        if( any(is.na(df$color)) ){
                 df$color[is.na(df$color)] <- othersCol
            }
         
