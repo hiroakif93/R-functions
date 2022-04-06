@@ -26,9 +26,9 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
                na.rm=TRUE){
 
     if(na.rm){
-        total.abundance <- apply(data, 2, sort, na.rm=TRUE)
+        total.abundance <- apply(data, 2, sortFun, na.rm=TRUE)
     }else{
-        total.abundance <- apply(data, 2, sort)
+        total.abundance <- apply(data, 2, sortFun)
     }
     
     ## ||||||||||||||||||||||||||||||||||| ##
