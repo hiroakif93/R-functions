@@ -13,7 +13,7 @@
 #' col <- palettes()
 #' colpal <- makeColPalette(data=test[,-1], 
 #'                             color=col, 
-#'                             others='grey30', 
+#'                             othersCol='grey30', 
 #'                             specificName = 'unidentified', 
 #'                             specificColor = 'grey90',
 #'                             sort=sum)
@@ -57,7 +57,7 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
             
             if(nrow(df[-specific,])>length(color)){
                 other <- (df[-c(1:length(color)), ])
-                df$color[is.na(df$color)] <- others
+                df$color[is.na(df$color)] <- othersCol
             }
             
             col <- df$color
@@ -69,7 +69,7 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
             df[c(1:length(color)), 'color'] <- color
             
             if(nrow(df)>length(color)){
-                df[-c(1:length(color)), 'color'] <- others
+                df[-c(1:length(color)), 'color'] <- othersCol
             }
             
             col <- df$color
@@ -82,7 +82,7 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
         df[c(1:length(color)), 'color'] <- color
         
         if(nrow(df)>length(color)){
-            df[-c(1:length(color)), 'color'] <- others
+            df[-c(1:length(color)), 'color'] <- othersCol
         }
         
         col <- df$color
