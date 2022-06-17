@@ -13,7 +13,7 @@
 #' col <- palettes()
 #' colpal <- makeColPalette(data=test[,-1], 
 #'                             color=col, 
-#'                             othersCol='grey30', 
+#'                             others='grey30', 
 #'                             specificName = 'unidentified', 
 #'                             specificColor = 'grey90',
 #'                             sort=sum)
@@ -55,8 +55,9 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
             df[c(1:length(color)), 'color'] <- color
             df[specific, 'color'] <- specificColor
             
-            if( any(is.na(df$color)) ){
-                df$color[is.na(df$color)] <- othersCol
+            if(nrow(df[-specific,])>length(color)){
+                other <- (df[-c(1:length(color)), ])
+                df$color[is.na(df$color)] <- others
             }
             
             col <- df$color
@@ -67,8 +68,8 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
             warning('Ignored specificName species because missing the species')
             df[c(1:length(color)), 'color'] <- color
             
-            if( any(is.na(df$color)) ){
-                df$color[is.na(df$color)] <- othersCol
+            if(nrow(df)>length(color)){
+                df[-c(1:length(color)), 'color'] <- others
             }
             
             col <- df$color
@@ -80,13 +81,13 @@ makeColPalette <- function(data, color=NULL, othersCol='grey30',
         
         df[c(1:length(color)), 'color'] <- color
         
-        if( any(is.na(df$color)) ){
-                df$color[is.na(df$color)] <- othersCol
-           }
+        if(nrow(df)>length(color)){
+            df[-c(1:length(color)), 'color'] <- others
+        }
         
         col <- df$color
         names(col) <- df$taxa
     }
     
-    return(col[ !is.na(names(col)) ])
+    return(col)
 }

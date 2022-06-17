@@ -14,12 +14,11 @@
 #' 
 #' @export
 
-saveFile <- function(obj=NULL, filename='file', 
+saveFiles <- function(obj=NULL, filename='file', 
                       row.names=NULL, names='sampleID',
                       type=c(1:2, 'rds', 'csv')){
     
     if(class(obj)=='list'){
-    	
     	saveRDS(obj, file=sprintf('%s.rds', filename))
     }else{
     
@@ -28,12 +27,12 @@ saveFile <- function(obj=NULL, filename='file',
         obj2 <- cbind(rn, obj)
         colnames(obj2)[1] <- names
     }else{
-        ogj2 <- obj
+        obj2 <- obj
     }
     
-    if(type%in%c('rds', 1)) saveRDS(obj, file=sprintf('%s.rds', filename))
-    if(type%in%c('csv', 2)) write.csv(ogj2, file=sprintf('%s.csv', filename), row.names=FALSE)
-    if(type%in%c('tab', 3)) write.table(ogj2, file=sprintf('%s.txt', filename), 
+    if(any(type%in%c('rds', 1))) saveRDS(obj, file=sprintf('%s.rds', filename))
+    if(any(type%in%c('csv', 2))) write.csv(obj2, file=sprintf('%s.csv', filename), row.names=FALSE)
+    if(any(type%in%c('tab', 3))) write.table(obj2, file=sprintf('%s.txt', filename), 
                                     quote=FALSE, sep='\t', row.names=FALSE)
     }
 }
