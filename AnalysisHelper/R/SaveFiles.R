@@ -13,9 +13,8 @@
 #' saveFile(obj=iris, filename='iris', type=1:3)
 #' 
 #' @export
-
 saveFiles <- function(obj=NULL, filename='file', 
-                      row.names=NULL, names='sampleID',
+                      row.names=NULL, names=NULL,
                       type=c(1:2, 'rds', 'csv')){
     
     if(class(obj)=='list'){
@@ -23,19 +22,29 @@ saveFiles <- function(obj=NULL, filename='file',
     }else{
     
     if(!is.null(row.names)){
-      
-        rownames(obj) <- obj[,row.names]
-      
-        rn <- obj[,row.names]
-        obj2 <- cbind(rn, obj)
-        colnames(obj2)[1] <- names
+    	
+    	rownames(obj) <- obj[,row.names]
+    	
+        obj2 <- obj[,-row.names]
+        
     }else{
-        obj2 <- obj
+    	
+    	if(!is.null(row.names)){
+    		obj2 <- obj
+    		
+    		obj <- cbind(rownames(obj), obj)
+    		colnames(obj)[1] <- names
+    	}else{
+    		
+    		obj2 <- obj
+    		
+    	}
+        
     }
     
-    if(any(type%in%c('rds', 1))) saveRDS(obj, file=sprintf('%s.rds', filename))
-    if(any(type%in%c('csv', 2))) write.csv(obj2, file=sprintf('%s.csv', filename), row.names=FALSE)
-    if(any(type%in%c('tab', 3))) write.table(obj2, file=sprintf('%s.txt', filename), 
+    if(any(type%in%c('rds', 1))) saveRDS(obj2, file=sprintf('%s.rds', filename))
+    if(any(type%in%c('csv', 2))) write.csv(obj, file=sprintf('%s.csv', filename), row.names=FALSE)
+    if(any(type%in%c('tab', 3))) write.table(obj, file=sprintf('%s.txt', filename), 
                                     quote=FALSE, sep='\t', row.names=FALSE)
     }
 }
