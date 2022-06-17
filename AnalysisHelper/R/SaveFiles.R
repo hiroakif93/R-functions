@@ -23,6 +23,9 @@ saveFiles <- function(obj=NULL, filename='file',
     }else{
     
     if(!is.null(row.names)){
+      
+        rownames(obj) <- obj[,row.names]
+      
         rn <- obj[,row.names]
         obj2 <- cbind(rn, obj)
         colnames(obj2)[1] <- names
