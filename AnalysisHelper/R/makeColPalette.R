@@ -21,73 +21,52 @@
 #' @export
 
 
-makeColPalette <- function(data, color=NULL, othersCol='grey30',
-               specificName =NULL, specificColor = 'grey90', sortFun = sum,
-               na.rm=TRUE){
-
-    if(na.rm){
-        total.abundance <- apply(data, 2, sortFun, na.rm=TRUE)
-    }else{
+makeColPalette <-function (data, color = NULL, othersCol = "grey30", specificName = NULL, 
+    specificColor = "grey90", sortFun = sum, na.rm = TRUE) 
+{
+    if (na.rm) {
+        total.abundance <- apply(data, 2, sortFun, na.rm = TRUE)
+    }
+    else {
         total.abundance <- apply(data, 2, sortFun)
     }
-    
-    ## ||||||||||||||||||||||||||||||||||| ##
-    
-    df <- data.frame(taxa = colnames(data), 
-                     total.abundance = total.abundance, 
-                     stringsAsFactors = FALSE)
+    df <- data.frame(taxa = colnames(data), total.abundance = total.abundance, 
+        stringsAsFactors = FALSE)
     df <- df[order(df$total.abundance, decreasing = TRUE), ]
-    
-    ## ||||||||||||||||||||||||||||||||||| ##
-    
     df$color <- NA
-    
-    if(!is.null(specificName)) {
-        
-        if(is.null(specificColor)){ specificColor <- 'grey90' }
-        
-        if(any(df$taxa%in%specificName)){
-            
+    if (!is.null(specificName)) {
+        if (is.null(specificColor)) {
+            specificColor <- "grey90"
+        }
+        if (any(df$taxa %in% specificName)) {
             specific <- which(df$taxa %in% specificName)
-            df <- rbind(df[-specific,], df[specific,])
-            specific <- -(length(specific)-1):0 + nrow(df)
-            
-            df[c(1:length(color)), 'color'] <- color
-            df[specific, 'color'] <- specificColor
-            
-            if(nrow(df[-specific,])>length(color)){
-                other <- (df[-c(1:length(color)), ])
-                df$color[is.na(df$color)] <- others
+            df <- rbind(df[-specific, ], df[specific, ])
+            specific <- -(length(specific) - 1):0 + nrow(df)
+            df[c(1:length(color)), "color"] <- color
+            df[specific, "color"] <- specificColor
+            if (any(is.na(df$color))) {
+                df$color[is.na(df$color)] <- othersCol
             }
-            
-            col <- df$color
-            names(col) <- df$taxa
-        
-        }else{
-            
-            warning('Ignored specificName species because missing the species')
-            df[c(1:length(color)), 'color'] <- color
-            
-            if(nrow(df)>length(color)){
-                df[-c(1:length(color)), 'color'] <- others
-            }
-            
             col <- df$color
             names(col) <- df$taxa
         }
-        
-    
-    }else{
-        
-        df[c(1:length(color)), 'color'] <- color
-        
-        if(nrow(df)>length(color)){
-            df[-c(1:length(color)), 'color'] <- others
+        else {
+            warning("Ignored specificName species because missing the species")
+            df[c(1:length(color)), "color"] <- color
+            if (any(is.na(df$color))) {
+                df$color[is.na(df$color)] <- othersCol
+            }
+            col <- df$color
+            names(col) <- df$taxa
         }
-        
+    }
+    else {
+        df[c(1:length(color)), "color"] <- color
+        if (any(is.na(df$color))) {
+            df$color[is.na(df$color)] <- othersCol
+        }
         col <- df$color
         names(col) <- df$taxa
     }
-    
-    return(col)
+    return(col[!is.na(names(col))])
 }
