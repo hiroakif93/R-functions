@@ -3,6 +3,7 @@
 export(Subset)
 export(Taxa.mat)
 export(binary)
+export(filtMat)
 export(load.lib)
 export(make.dir)
 export(makeColPalette)
