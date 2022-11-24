@@ -21,7 +21,7 @@
 #' @export
 
 
-makeColPalette <-function (data, color = NULL, othersCol = "grey30", specificName = NULL, 
+makeColPalette <- function (data, color = NULL, othersCol = "grey30", specificName = NULL, 
     specificColor = "grey90", sortFun = sum, na.rm = TRUE) 
 {
     if (na.rm) {
