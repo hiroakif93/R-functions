@@ -12,7 +12,7 @@
 #' @export
 
 
-theme_text <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL, gridcol="grey92"){
+theme_text <- function(bsize=6, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
     
     themeown <- theme(plot.background = element_blank(),
                        panel.border=element_rect(fill=NA, linewidth=lwd),
@@ -26,15 +26,18 @@ theme_text <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL, gridcol="grey9
                        legend.background = element_blank(),
                        legend.text = element_text(size=bsize, family=family),
                        legend.title = element_text(size=bsize+1, family=family),
-                       legend.key.size=unit(unitsize, 'line'),
                        title = element_text(size=bsize+1, family=family),
                        plot.subtitle = element_text(size=bsize+1, family=family),
                        plot.caption = element_text(size=bsize+1, family=family)
                        )
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
-        
     }
+    
+    if(!is.null(unitsize) ){
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'))
+    }
+    
     return(list(themeown))
 }
 
@@ -52,7 +55,7 @@ theme_text <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL, gridcol="grey9
 #'
 #' @export
 
-theme_md <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL, gridcol="grey92"){
+theme_md <- function(bsize=6, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
     
     themeown <- theme(plot.background = element_blank(),
                        panel.border=element_rect(fill=NA, size=lwd),
@@ -66,14 +69,16 @@ theme_md <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL, gridcol="grey92"
                        legend.background = element_blank(),
                        legend.text = element_markdown(size=bsize, family=family),
                        legend.title = element_markdown(size=bsize+1, family=family),
-                       legend.key.size=unit(unitsize, 'line'),
                        title = element_markdown(size=bsize+1, family=family),
                        plot.subtitle = element_markdown(size=bsize+1, family=family),
                        plot.caption = element_markdown(size=bsize+1, family=family)
                        )
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
-        
+    }
+    
+    if(!is.null(unitsize) ){
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'))
     }
     return(list(themeown))
 }
