@@ -12,10 +12,10 @@
 #' @export
 
 
-theme_text <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL){
+theme_text <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL, gridcol="grey92"){
     
     themeown <- theme(plot.background = element_blank(),
-                       panel.border=element_rect(fill=NA, size=lwd),
+                       panel.border=element_rect(fill=NA, linewidth=lwd),
                        panel.background = element_rect(fill = NA, 
                                                        colour = NA),
                        axis.text.x=element_text(size=bsize, family=family),
@@ -31,6 +31,10 @@ theme_text <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL){
                        plot.subtitle = element_text(size=bsize+1, family=family),
                        plot.caption = element_text(size=bsize+1, family=family)
                        )
+    if(!is.null(gridcol) ){
+        themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
+        
+    }
     return(list(themeown))
 }
 
@@ -48,7 +52,7 @@ theme_text <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL){
 #'
 #' @export
 
-theme_md <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL){
+theme_md <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL, gridcol="grey92"){
     
     themeown <- theme(plot.background = element_blank(),
                        panel.border=element_rect(fill=NA, size=lwd),
@@ -67,5 +71,9 @@ theme_md <- function(bsize=6, lwd=0.5, unitsize=1, family=NULL){
                        plot.subtitle = element_markdown(size=bsize+1, family=family),
                        plot.caption = element_markdown(size=bsize+1, family=family)
                        )
+    if(!is.null(gridcol) ){
+        themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
+        
+    }
     return(list(themeown))
 }
