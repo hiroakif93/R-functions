@@ -32,12 +32,12 @@ theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, 
                        legend.box.background = element_blank()
                       )
     if(!is.null(gridcol) ){
-        themeown <- themeown+theme(panel.grid = element_line(colour = gridcol),
-                                  legend.key = element_rect(fill=NA))
+        themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
     }
     
     if(!is.null(unitsize) ){
-        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'))
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
+                                  legend.key = element_rect(fill=NA))
     }
     
     return(list(themeown))
@@ -74,8 +74,7 @@ theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gr
                        title = element_markdown(size=bsize+plssize, family=family),
                        plot.subtitle = element_markdown(size=bsize+plssize, family=family),
                        plot.caption = element_markdown(size=bsize+plssize, family=family),
-                       legend.box.background = element_blank(),
-                      legend.key =element_blank()
+                       legend.box.background = element_blank()
                        )
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
