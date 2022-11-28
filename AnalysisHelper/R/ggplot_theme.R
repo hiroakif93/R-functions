@@ -29,8 +29,9 @@ theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, 
                        title = element_text(size=bsize+plssize, family=family),
                        plot.subtitle = element_text(size=bsize+plssize, family=family),
                        plot.caption = element_text(size=bsize+plssize, family=family),
-                       legend.box.background = element_blank()
-                       )
+                       legend.box.background = element_blank(),
+                      legend.key =element_blank() 
+                      )
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
     }
@@ -74,7 +75,8 @@ theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gr
                        title = element_markdown(size=bsize+plssize, family=family),
                        plot.subtitle = element_markdown(size=bsize+plssize, family=family),
                        plot.caption = element_markdown(size=bsize+plssize, family=family),
-                       legend.box.background = element_blank()
+                       legend.box.background = element_blank(),
+                      legend.key =element_blank()
                        )
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
