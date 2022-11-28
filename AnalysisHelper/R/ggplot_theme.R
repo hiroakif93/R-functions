@@ -37,8 +37,7 @@ theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, 
     }
     
     if(!is.null(unitsize) ){
-        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
-                                   legend.key = element_rect(fill=NA))
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'))
     }
     
     return(list(themeown))
@@ -83,8 +82,7 @@ theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gr
     }
     
     if(!is.null(unitsize) ){
-        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
-                                   legend.key = element_rect(fill=NA))
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'))
     }
     return(list(themeown))
 }
