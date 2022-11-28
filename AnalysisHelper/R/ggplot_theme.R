@@ -12,7 +12,7 @@
 #' @export
 
 
-theme_text <- function(bsize=6, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
+theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
     
     themeown <- theme(plot.background = element_blank(),
                        panel.border=element_rect(fill=NA, linewidth=lwd),
@@ -20,15 +20,16 @@ theme_text <- function(bsize=6, lwd=0.5, unitsize=NULL, family=NULL, gridcol="gr
                                                        colour = NA),
                        axis.text.x=element_text(size=bsize, family=family),
                        axis.text.y=element_text(size=bsize, family=family),
-                       axis.title=element_text(size=bsize+1, family=family),
+                       axis.title=element_text(size=bsize+plssize, family=family),
                        strip.background = element_blank(),
-                       strip.text=element_text(size=bsize+1, family=family),
+                       strip.text=element_text(size=bsize+plssize, family=family),
                        legend.background = element_blank(),
                        legend.text = element_text(size=bsize, family=family),
-                       legend.title = element_text(size=bsize+1, family=family),
-                       title = element_text(size=bsize+1, family=family),
-                       plot.subtitle = element_text(size=bsize+1, family=family),
-                       plot.caption = element_text(size=bsize+1, family=family)
+                       legend.title = element_text(size=bsize+plssize, family=family),
+                       title = element_text(size=bsize+plssize, family=family),
+                       plot.subtitle = element_text(size=bsize+plssize, family=family),
+                       plot.caption = element_text(size=bsize+plssize, family=family),
+                       legend.box.background = element_blank()
                        )
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
@@ -56,23 +57,24 @@ theme_text <- function(bsize=6, lwd=0.5, unitsize=NULL, family=NULL, gridcol="gr
 #'
 #' @export
 
-theme_md <- function(bsize=6, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
+theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
     
     themeown <- theme(plot.background = element_blank(),
                        panel.border=element_rect(fill=NA, size=lwd),
                        panel.background = element_rect(fill = NA, 
                                                        colour = NA),
                        axis.text= element_markdown(size=bsize, family=family),
-                       axis.title.x= element_markdown(size=bsize+1, family=family),
-                       axis.title.y= element_markdown(size=bsize+1, family=family),
+                       axis.title.x= element_markdown(size=bsize+plssize, family=family),
+                       axis.title.y= element_markdown(size=bsize+plssize, family=family),
                        strip.background = element_blank(),
-                       strip.text= element_markdown(size=bsize+1, family=family),
+                       strip.text= element_markdown(size=bsize+plssize, family=family),
                        legend.background = element_blank(),
                        legend.text = element_markdown(size=bsize, family=family),
-                       legend.title = element_markdown(size=bsize+1, family=family),
-                       title = element_markdown(size=bsize+1, family=family),
-                       plot.subtitle = element_markdown(size=bsize+1, family=family),
-                       plot.caption = element_markdown(size=bsize+1, family=family)
+                       legend.title = element_markdown(size=bsize+plssize, family=family),
+                       title = element_markdown(size=bsize+plssize, family=family),
+                       plot.subtitle = element_markdown(size=bsize+plssize, family=family),
+                       plot.caption = element_markdown(size=bsize+plssize, family=family),
+                       legend.box.background = element_blank()
                        )
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
