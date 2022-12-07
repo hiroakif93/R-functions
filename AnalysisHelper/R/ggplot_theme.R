@@ -12,7 +12,8 @@
 #' @export
 
 
-theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
+theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92",
+                       legend.back.color=FALSE){
     
     themeown <- theme(plot.background = element_blank(),
                        panel.border=element_rect(fill=NA, linewidth=lwd),
@@ -40,6 +41,10 @@ theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, 
                                   legend.key = element_rect(fill=NA))
     }
     
+    if(legend.back.color){
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
+                                   legend.key =element_blank())
+    }
     return(list(themeown))
 }
 
@@ -57,7 +62,8 @@ theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, 
 #'
 #' @export
 
-theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92"){
+theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92",
+                     legend.back.color=FALSE){
     
     themeown <- theme(plot.background = element_blank(),
                        panel.border=element_rect(fill=NA, size=lwd),
@@ -83,6 +89,11 @@ theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gr
     if(!is.null(unitsize) ){
         themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
                                   legend.key = element_rect(fill=NA))
+    }
+    
+    if(legend.back.color){
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
+                                   legend.key =element_blank())
     }
     return(list(themeown))
 }
