@@ -13,8 +13,12 @@
 
 
 theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92",
-                       legend.back.color=TRUE, expand=TRUE){
+                       legend.back.color=TRUE, 
+                       expandCx=FALSE, expandCy=FALSE, 
+                       expandDx=FALSE, expandDy=FALSE){
     
+    ## ===================================================================== ##
+    ## -- Base theme
     themeown <- theme(plot.background = element_blank(),
                       panel.border=element_rect(fill=NA, linewidth=lwd),
                       panel.background = element_rect(fill = NA, 
@@ -32,27 +36,32 @@ theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, 
                       plot.caption = element_text(size=bsize+plssize, family=family),
                       legend.box.background = element_blank()
     )
+  
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Grid color
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
     }
     
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Legend size
     if(!is.null(unitsize) ){
-        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
-                                   legend.key = element_rect(fill=NA))
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'))
     }
     
-   if(legend.back.color){
-        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
-                                   legend.key =element_blank())
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Legend background color
+    if(legend.back.color){
+        themeown <- themeown+theme(legend.key =element_blank())
     }
-  
-    if(expand){
-        scaleown <- list(scale_x_continuous(expand=c(0,0)),
-                         scale_x_discrete(expand=c(0,0)),
-                         scale_y_continuous(expand=c(0,0)),
-                         scale_y_discrete(expand=c(0,0)) )
-        
-    }else{ scaleown <- NULL }
+    
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Margin within plot area
+    scaleown <- NULL 
+    if(expandCx) scaleown <- list(scaleown, scale_x_continuous(expand=c(0,0)))
+    if(expandCy) scaleown <- list(scaleown, scale_y_continuous(expand=c(0,0)))
+    if(expandDx) scaleown <- list(scaleown, scale_x_discrete(expand=c(0,0)))
+    if(expandDy) scaleown <- list(scaleown, scale_y_discrete(expand=c(0,0)))  
     
     return(list(themeown, scaleown))
     
@@ -73,46 +82,55 @@ theme_text <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, 
 #' @export
 
 theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gridcol="grey92",
-                     legend.back.color=FALSE, expand=TRUE){
+                     legend.back.color=TRUE, 
+                     expandCx=FALSE, expandCy=FALSE, 
+                     expandDx=FALSE, expandDy=FALSE){
     
+    ## ===================================================================== ##
+    ## -- Base theme
     themeown <- theme(plot.background = element_blank(),
-                       panel.border=element_rect(fill=NA, linewidth=lwd),
-                       panel.background = element_rect(fill = NA, 
-                                                       colour = NA),
-                       axis.text= element_markdown(size=bsize, family=family),
-                       axis.title.x= element_markdown(size=bsize+plssize, family=family),
-                       axis.title.y= element_markdown(size=bsize+plssize, family=family),
-                       strip.background = element_blank(),
-                       strip.text= element_markdown(size=bsize+plssize, family=family),
-                       legend.background = element_blank(),
-                       legend.text = element_markdown(size=bsize, family=family),
-                       legend.title = element_markdown(size=bsize+plssize, family=family),
-                       title = element_markdown(size=bsize+plssize, family=family),
-                       plot.subtitle = element_markdown(size=bsize+plssize, family=family),
-                       plot.caption = element_markdown(size=bsize+plssize, family=family),
-                       legend.box.background = element_blank()
-                       )
+                      panel.border=element_rect(fill=NA, linewidth=lwd),
+                      panel.background = element_rect(fill = NA, 
+                                                      colour = NA),
+                      axis.text.x=element_text(size=bsize, family=family),
+                      axis.text.y=element_text(size=bsize, family=family),
+                      axis.title=element_text(size=bsize+plssize, family=family),
+                      strip.background = element_blank(),
+                      strip.text=element_text(size=bsize+plssize, family=family),
+                      legend.background = element_blank(),
+                      legend.text = element_text(size=bsize, family=family),
+                      legend.title = element_text(size=bsize+plssize, family=family),
+                      title = element_text(size=bsize+plssize, family=family),
+                      plot.subtitle = element_text(size=bsize+plssize, family=family),
+                      plot.caption = element_text(size=bsize+plssize, family=family),
+                      legend.box.background = element_blank()
+    )
+  
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Grid color
     if(!is.null(gridcol) ){
         themeown <- themeown+theme(panel.grid = element_line(colour = gridcol))
     }
     
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Legend size
     if(!is.null(unitsize) ){
-        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
-                                  legend.key = element_rect(fill=NA))
+        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'))
     }
     
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Legend background color
     if(legend.back.color){
-        themeown <- themeown+theme(legend.key.size=unit(unitsize, 'line'),
-                                   legend.key =element_blank())
+        themeown <- themeown+theme(legend.key =element_blank())
     }
-  
-    if(expand){
-        scaleown <- list(scale_x_continuous(expand=c(0,0)),
-                         scale_x_discrete(expand=c(0,0)),
-                         scale_y_continuous(expand=c(0,0)),
-                         scale_y_discrete(expand=c(0,0)) )
-        
-    }else{ scaleown <- NULL }
+    
+    ## ++++++++++++++++++++++++++++++ ##
+    ## -- Margin within plot area
+    scaleown <- NULL 
+    if(expandCx) scaleown <- list(scaleown, scale_x_continuous(expand=c(0,0)))
+    if(expandCy) scaleown <- list(scaleown, scale_y_continuous(expand=c(0,0)))
+    if(expandDx) scaleown <- list(scaleown, scale_x_discrete(expand=c(0,0)))
+    if(expandDy) scaleown <- list(scaleown, scale_y_discrete(expand=c(0,0)))  
     
     return(list(themeown, scaleown))
 }
