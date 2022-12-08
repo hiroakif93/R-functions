@@ -71,7 +71,7 @@ theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gr
                      legend.back.color=FALSE, expand=TRUE){
     
     themeown <- theme(plot.background = element_blank(),
-                       panel.border=element_rect(fill=NA, size=lwd),
+                       panel.border=element_rect(fill=NA, linewidth=lwd),
                        panel.background = element_rect(fill = NA, 
                                                        colour = NA),
                        axis.text= element_markdown(size=bsize, family=family),
