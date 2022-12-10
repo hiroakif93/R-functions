@@ -94,15 +94,15 @@ theme_md <- function(bsize=6, plssize=0, lwd=0.5, unitsize=NULL, family=NULL, gr
                                                       colour = NA),
                       axis.text.x=element_text(size=bsize, family=family),
                       axis.text.y=element_text(size=bsize, family=family),
-                      axis.title=element_text(size=bsize+plssize, family=family),
+                      axis.title=element_markdown(size=bsize+plssize, family=family),
                       strip.background = element_blank(),
-                      strip.text=element_text(size=bsize+plssize, family=family),
+                      strip.text=element_markdown(size=bsize+plssize, family=family),
                       legend.background = element_blank(),
-                      legend.text = element_text(size=bsize, family=family),
-                      legend.title = element_text(size=bsize+plssize, family=family),
-                      title = element_text(size=bsize+plssize, family=family),
-                      plot.subtitle = element_text(size=bsize+plssize, family=family),
-                      plot.caption = element_text(size=bsize+plssize, family=family),
+                      legend.text = element_markdown(size=bsize, family=family),
+                      legend.title = element_markdown(size=bsize+plssize, family=family),
+                      title = element_markdown(size=bsize+plssize, family=family),
+                      plot.subtitle = element_markdown(size=bsize+plssize, family=family),
+                      plot.caption = element_markdown(size=bsize+plssize, family=family),
                       legend.box.background = element_blank()
     )
   
