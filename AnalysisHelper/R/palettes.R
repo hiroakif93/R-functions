@@ -21,7 +21,7 @@ palettes <- function(x=70, pal='RColorBrewer')
     if(pal=='RColorBrewer'){
         qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
         col.vector <- unique(unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals))))
-    }else{
+    }else if(pal=='rainbow'){
         
         if(x>35) {
             x <- 35
@@ -37,7 +37,11 @@ palettes <- function(x=70, pal='RColorBrewer')
         
         colmat <- cbind(col1, col2, col3, col4, col5, col6)
         col.vector <- c( as.vector(colmat), brewer.pal(10, 'Set3')[-c(4,6:9)]) 
-    }    
+    }else if( length(pal) > 1 ) {
+      
+      col.vector <- pal
+      x = length(pal)
+    }
     
     
     return(col.vector[1:x])
