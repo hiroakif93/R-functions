@@ -8,7 +8,7 @@
 #' 
 #' @export
 
-load.lib <- function (libs) 
+load.lib <- function (...) 
 {	
 
 	# -------------------------------------------------#	
