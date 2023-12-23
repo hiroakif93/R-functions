@@ -1,6 +1,6 @@
 #' Loading multiple library
 #' 
-#' @param libs is a character vector of package names.
+#' @param ...: package names. Quotations are unnecessary.
 #' 
 #' @examples
 #' load.lib( "vegan" )
