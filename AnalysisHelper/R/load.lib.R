@@ -1,6 +1,6 @@
 #' Loading multiple library
 #' 
-#' @param libs is a character vector of package names.
+#' @param ...: package names. Quotations are unnecessary.
 #' 
 #' @examples
 #' load.lib( "vegan" )
@@ -8,23 +8,20 @@
 #' 
 #' @export
 
-load.lib <- function (libs) 
+load.lib <- function (...) 
 {	
 
 	# -------------------------------------------------#	
     # Loading multiple library function.
     # libs is a character vector of package names.
     #
-    # Exnample 1 
-    # load.lib( "vegan" )
-    # 
-    # Exnample 2
-    # load.lib( c("vegan", "ggplot2") )
+    # Exnample 
+    # load.lib( vegan )
     # -------------------------------------------------#
     
-    invisible(lapply(libs, function(x) invisible(library(package = x, 
-                                                         character.only = TRUE))))
-    invisible(sapply(libs, function(x) cat(sprintf("%s %s\n", 
-                                                   x, packageVersion(x)))))
+   libs <- as.character(substitute(list(...)))[-1]
+  
+  invisible(lapply(libs, function(x) invisible(library(package = x, character.only = TRUE))))
+  invisible(sapply(libs, function(x) cat(sprintf("%s %s\n", x, packageVersion(x)))))
     
 }
