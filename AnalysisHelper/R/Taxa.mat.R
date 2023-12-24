@@ -43,7 +43,7 @@ Taxa.mat <- function(data, taxa, taxaLabel, func=function(x){sum(x)}){
     summary <- do.call(cbind,
                        lapply(unique(colnames(data)), 
                               function(a){ num <- which(colnames(data)==a)
-                              apply(as.matrix(data)[,num], 1, func)}) )
+                              apply(as.matrix(data[,num]), 1, func)}) )
     
     colnames(summary) <- unique(colnames(data))
     rownames(summary) <- rownames(data)
