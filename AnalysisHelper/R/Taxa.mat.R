@@ -5,7 +5,7 @@
 #' @param data data is abundance table which colnames is ASV / OTU.
 #' @param taxa taxa is taxnomy information table.
 #' @param taxaLabel taxaLabel is a taxnomy level which you want to remake.
-#' @param func func is function. default is sum()
+#' @param func func is function. default is sum()https://github.com/hiroakif93/R-functions/blob/main/AnalysisHelper/R/Taxa.mat.R
 #'
 #' 
 #' @examples
@@ -43,8 +43,9 @@ Taxa.mat <- function(data, taxa, taxaLabel, func=function(x){sum(x)}){
     summary <- do.call(cbind,
                        lapply(unique(colnames(data)), 
                               function(a){ num <- which(colnames(data)==a)
-                              apply(data[,num], 1, func)}) )
+                              apply(as.matrix(data)[,num], 1, func)}) )
     
     colnames(summary) <- unique(colnames(data))
+    rownames(summary) <- rownames(data)
     summary
 }
