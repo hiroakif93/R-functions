@@ -4,7 +4,19 @@
 \alias{theme_text}
 \title{ggplot2 theme}
 \usage{
-theme_text(bsize = 6, lwd = 0.5, unitsize = 1, family = NULL)
+theme_text(
+  bsize = 6,
+  plssize = 0,
+  lwd = 0.5,
+  unitsize = NULL,
+  family = NULL,
+  gridcol = "grey92",
+  legend.back.color = TRUE,
+  expandCx = FALSE,
+  expandCy = FALSE,
+  expandDx = FALSE,
+  expandDy = FALSE
+)
 }
 \arguments{
 \item{bsize}{: mimum size of text.}
@@ -17,7 +29,4 @@ theme_text(bsize = 6, lwd = 0.5, unitsize = 1, family = NULL)
 }
 \description{
 ggplot2 theme
-}
-\examples{
-
 }

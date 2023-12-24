@@ -4,9 +4,14 @@
 \alias{Taxa.mat}
 \title{Remake the matrix to other taxonomy level.}
 \usage{
-Taxa.mat(data, taxa, taxaLabel, func = function(x) {
-    sum(x)
-})
+Taxa.mat(
+  data,
+  taxa,
+  taxaLabel,
+  func = function(x) {
+     sum(x)
+ }
+)
 }
 \arguments{
 \item{data}{data is abundance table which colnames is ASV / OTU.}

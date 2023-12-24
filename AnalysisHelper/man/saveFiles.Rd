@@ -2,24 +2,23 @@
 % Please edit documentation in R/SaveFiles.R
 \name{saveFiles}
 \alias{saveFiles}
-\title{Saving object in multiple file format}
+\title{Saving an object in various file formats}
 \usage{
 saveFiles(
-  obj = NULL,
-  filename = "file",
-  row.names = NULL,
-  names = "sampleID",
-  type = c(1:2, "rds", "csv")
+  obj,
+  filename,
+  dir = getwd(),
+  row.names = FALSE,
+  type = c(1:3, "rds", "csv", "tab")
 )
 }
 \arguments{
 \item{type}{: You can save object as RDS, CSV and tab delimited format. default outputs are RDS and CSV files}
 }
 \description{
-Saving object in multiple file format
+Saving an object in various file formats
 }
 \examples{
-# If you want infomation of one iris species.
 data(iris) 
 
 ## Save rds and csv format
