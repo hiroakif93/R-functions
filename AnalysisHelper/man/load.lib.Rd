@@ -4,10 +4,10 @@
 \alias{load.lib}
 \title{Loading multiple library}
 \usage{
-load.lib(libs)
+load.lib(...)
 }
 \arguments{
-\item{libs}{is a character vector of package names.}
+\item{...:}{package names. Quotations are unnecessary.}
 }
 \description{
 Loading multiple library

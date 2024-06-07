@@ -20,7 +20,7 @@ Taxa.mat(
 
 \item{taxaLabel}{taxaLabel is a taxnomy level which you want to remake.}
 
-\item{func}{func is function. default is sum()}
+\item{func}{func is function. default is sum()https://github.com/hiroakif93/R-functions/blob/main/AnalysisHelper/R/Taxa.mat.R}
 }
 \description{
 This function is useful for OTU/ASV data table. Similar to aggregate function.
