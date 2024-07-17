@@ -68,5 +68,9 @@ barplot_obj = function(x, meta_cols = NULL,
   col =ranking_table$color
   names(col) = ranking_table$taxa
 
+  if(!is.null(meta_cols)) {
+    res =cbind(meta, res)
+  }
+
   return(list(as.data.frame(res), col))
 }
