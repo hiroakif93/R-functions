@@ -4,9 +4,14 @@
 #' @param mat x is a data.frame of community matrix.
 #' @export
 #'
-barplot_obj = function(x, color = palettes(35, "rainbow"), othersCol = "grey30", specificName = NULL,
+barplot_obj = function(x, meta_cols = NULL,
+                       color = palettes(35, "rainbow"), othersCol = "grey30", specificName = NULL,
                        specificColor = "grey90", sortFun = sum, na.rm = TRUE){
 
+  if(!is.null(meta_cols)) {
+    meta = x[,meta_cols]
+    x = x[,-meta_cols]
+  }
 
   ## Ranking by your definition (default sum)
   total.abundance <- apply(x, 2, sortFun, na.rm = na.rm)
@@ -23,9 +28,16 @@ barplot_obj = function(x, color = palettes(35, "rainbow"), othersCol = "grey30",
   if(!is.null(specificName)){
 
     add_taxa = data.frame(taxa=specificName, color=specificColor)
-    ranking_table =
-      ranking_table |>
-      bind_rows(add_taxa)
+
+    if(any(ranking_table$taxa==specificName)){
+      ranking_table =
+        ranking_table |>
+        filter(taxa != specificName) |>
+        bind_rows(add_taxa)
+    }else{
+      stop(sprintf('%s cannot be found from the data'))
+    }
+
 
   }
 
